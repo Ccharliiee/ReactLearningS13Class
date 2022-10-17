@@ -6,14 +6,8 @@ import classes from "./Users.module.css";
 class Users extends Component {
   constructor() {
     super();
-    const DUMMY_USERS = [
-      { id: "u1", name: "Max" },
-      { id: "u2", name: "Manuel" },
-      { id: "u3", name: "Julie" },
-    ];
     this.state = {
       showUsers: true,
-      curUser: DUMMY_USERS,
     };
   }
   toggleUsersHandler() {
@@ -24,7 +18,7 @@ class Users extends Component {
   render() {
     const usersList = (
       <ul>
-        {this.state.curUser.map((user) => (
+        {this.props.users.map((user) => (
           <User key={user.id} name={user.name} />
         ))}
       </ul>
