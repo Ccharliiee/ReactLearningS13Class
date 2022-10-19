@@ -1,4 +1,5 @@
 import { useState, useEffect, Component } from "react";
+import UsersContext from "../store/users-context";
 import classes from "./UserFinder.module.css";
 
 import Users from "./Users";
@@ -9,6 +10,7 @@ const API_DUMMY_USERS = [
 ];
 
 class UserFinder extends Component {
+  static contextType = UsersContext;
   constructor() {
     super();
     this.state = {
@@ -18,11 +20,17 @@ class UserFinder extends Component {
     };
   }
   componentDidMount() {
-    this.setState({ usersTable: API_DUMMY_USERS });
+    //console.log(this.context.users);
+    this.setState({
+      usersTable: this.context.users,
+      filteredUsers: this.context.users,
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //console.log(this.context.users);
     if (prevState.searchTerm !== this.state.searchTerm) {
+      //console.log("this.state.usersTable: ", this.state.usersTable);
       this.setState({
         filteredUsers: this.state.usersTable.filter((user) =>
           user.name.includes(this.state.searchTerm)
