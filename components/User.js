@@ -7,8 +7,8 @@ class User extends Component {
   }
 }
 
-const User1 = (props) => {
+/* const User1 = (props) => {
   return <li className={classes.user}>{props.name}</li>;
-};
+}; */
 
 export default User;

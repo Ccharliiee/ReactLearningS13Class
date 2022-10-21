@@ -1,13 +1,15 @@
-import { useState, useEffect, Component } from "react";
+// import { useState, useEffect } from "react";
+import { Component } from "react";
 import UsersContext from "../store/users-context";
 import classes from "./UserFinder.module.css";
 
 import Users from "./Users";
-const API_DUMMY_USERS = [
+import UsersErrorBoundary from "./UsersErrorBoundary";
+/* const API_DUMMY_USERS = [
   { id: "u1", name: "Max" },
   { id: "u2", name: "Manuel" },
   { id: "u3", name: "Julie" },
-];
+]; */
 
 class UserFinder extends Component {
   static contextType = UsersContext;
@@ -48,14 +50,15 @@ class UserFinder extends Component {
         <div className={classes.finder}>
           <input type="search" onChange={this.searchChangeHandler.bind(this)} />
         </div>
-
-        <Users users={this.state.filteredUsers} />
+        <UsersErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </UsersErrorBoundary>
       </>
     );
   }
 }
 
-const UserFinder1 = () => {
+/* const UserFinder1 = () => {
   const [filteredUsers, setFilteredUsers] = useState(API_DUMMY_USERS);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -78,6 +81,6 @@ const UserFinder1 = () => {
       <Users users={filteredUsers} />
     </>
   );
-};
+}; */
 
 export default UserFinder;

@@ -2,7 +2,7 @@ import UserFinder from "./components/UserFinder";
 import UsersContext from "./store/users-context";
 
 const DUMMY_USERS = [
-  { id: "cxu1", name: "Max" },
+  { id: "cxu1", name: "CXMax" },
   { id: "cxu2", name: "Manuel" },
   { id: "cxu3", name: "Julie" },
 ];

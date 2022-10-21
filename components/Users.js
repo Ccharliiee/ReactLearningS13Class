@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component /* useState */ } from "react";
 import User from "./User";
 
 import classes from "./Users.module.css";
@@ -10,6 +10,13 @@ class Users extends Component {
       showUsers: true,
     };
   }
+
+  componentDidUpdate() {
+    if (this.props.users.length === 0) {
+      throw new Error("No user listed");
+    }
+  }
+
   toggleUsersHandler() {
     this.setState(() => {
       return { showUsers: !this.state.showUsers };
@@ -35,7 +42,7 @@ class Users extends Component {
   }
 }
 
-const Users1 = () => {
+/* const Users1 = () => {
   const [showUsers, setShowUsers] = useState(true);
   const DUMMY_USERS = [
     { id: "u1", name: "Max" },
@@ -63,6 +70,6 @@ const Users1 = () => {
       {showUsers && usersList}
     </div>
   );
-};
+}; */
 
 export default Users;
